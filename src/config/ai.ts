@@ -18,7 +18,7 @@ if (GEMINI_API_KEY) {
     // 2. LangChain Gemini Setup
     langchainGemini = new ChatGoogleGenerativeAI({
       apiKey: GEMINI_API_KEY,
-      modelName: 'gemini-1.5-flash',
+      modelName: 'gemini-3.5-flash',
       temperature: 0.2,
     });
     console.log('LangChain ChatGoogleGenerativeAI configured successfully.');

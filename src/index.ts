@@ -23,8 +23,13 @@ app.get('/health', (req: Request, res: Response) => {
   res.status(200).json({ status: 'OK', message: 'Nova Library backend service is healthy.' });
 });
 
+import bookRoutes from './routes/bookRoutes';
+import aiRoutes from './routes/aiRoutes';
+
 // Placeholder for route registrations (will be added in future prompts)
 // app.use('/api/auth', authRoutes);
+app.use('/api/books', bookRoutes);
+app.use('/api/ai', aiRoutes);
 
 // Global Error Handler
 app.use((err: any, req: Request, res: Response, next: NextFunction) => {

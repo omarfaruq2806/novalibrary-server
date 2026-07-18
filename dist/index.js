@@ -23,8 +23,10 @@ app.use(express_1.default.urlencoded({ extended: true }));
 app.get('/health', (req, res) => {
     res.status(200).json({ status: 'OK', message: 'Nova Library backend service is healthy.' });
 });
+const bookRoutes_1 = __importDefault(require("./routes/bookRoutes"));
 // Placeholder for route registrations (will be added in future prompts)
 // app.use('/api/auth', authRoutes);
+app.use('/api/books', bookRoutes_1.default);
 // Global Error Handler
 app.use((err, req, res, next) => {
     console.error('Unhandled Server Error:', err);
