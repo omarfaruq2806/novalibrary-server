@@ -3,20 +3,19 @@ import dotenv from 'dotenv';
 
 dotenv.config();
 
-const uri = process.env.MONGODB_URI;
-
-if (!uri) {
-  throw new Error('Please define the MONGODB_URI environment variable in .env');
-}
-
 let client: MongoClient;
 let db: Db;
 
 export async function connectDB(): Promise<Db> {
   if (db) return db;
 
+  const uri = process.env.MONGODB_URI;
+  if (!uri) {
+    throw new Error('Please define the MONGODB_URI environment variable.');
+  }
+
   try {
-    client = new MongoClient(uri!);
+    client = new MongoClient(uri);
     await client.connect();
     console.log('Successfully connected to MongoDB.');
     db = client.db(process.env.DB_NAME || 'novalibrary');
