@@ -18,6 +18,11 @@ app.use(cookieParser());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+// Root API greeting route
+app.get('/', (req: Request, res: Response) => {
+  res.status(200).json({ status: 'OK', message: 'Welcome to Nova Library API Server!' });
+});
+
 // Health Check Route
 app.get('/health', (req: Request, res: Response) => {
   res.status(200).json({ status: 'OK', message: 'Nova Library backend service is healthy.' });
@@ -60,3 +65,5 @@ async function bootstrap() {
 }
 
 bootstrap();
+
+export default app;
